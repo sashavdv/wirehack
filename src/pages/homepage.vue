@@ -1,12 +1,31 @@
 <template>
   <div>
-    Dit is de body van de page
+    <el-row>
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" class="text-center">
+        <el-button type="primary" class="rounded-lg px-24 text-xl" @click="borrow">Borrow</el-button>
+      </el-col>
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" class="text-center">
+        <el-button type="primary" class="rounded-lg px-24 text-xl" @click="invest">Invest</el-button>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'homepage'
+  name: 'homepage',
+  methods: {
+    borrow () {
+      this.$router.push({
+        name: 'borrow'
+      })
+    },
+    invest () {
+      this.$router.push({
+        name: 'invest'
+      })
+    }
+  }
 }
 </script>
 
