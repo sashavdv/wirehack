@@ -5,7 +5,7 @@
       <el-container>
         <!-- Header-->
         <el-header class="p-6">
-          <header></header>
+          <Header></Header>
         </el-header>
 
         <!-- Content -->
