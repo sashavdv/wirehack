@@ -10,7 +10,7 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="Years:" label-width="200px">
-            <el-select v-model="form.period">
+            <el-select v-model="form.period" @change="interest">
               <el-option label="1 years" value="1"></el-option>
               <el-option label="2 years" value="2"></el-option>
               <el-option label="3 years" value="3"></el-option>
@@ -33,17 +33,27 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="I want to be contacted by investors:" label-width="200px">
+          <el-form-item label="I am reachable by chat:" label-width="200px">
             <el-checkbox v-model="form.chat_able"></el-checkbox>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-row>
-        <el-col :span="24">
-          <el-form-item label="Description (optional)">
-          <el-input type="textarea" v-model="form.story"></el-input>
-        </el-form-item>
+      <el-row :gutter="10">
+        <el-col :span="12">
+          <el-form-item disabled label="Interest:" label-width="200px">
+            <el-input v-model="form.interest"></el-input>
+          </el-form-item>
         </el-col>
+        <el-col :span="12">
+          <p class="text-center"> Monthly payment: {{ ((this.form.amount * (1 + this.form.interest)) / (this.form.period * 12)) | toCurrency }}</p>
+        </el-col>
+      </el-row>
+      <el-row>
+          <el-col :span="24">
+            <el-form-item label="Description (optional)" label-width="100px">
+              <el-input type="textarea" v-model="form.story"></el-input>
+            </el-form-item>
+          </el-col>
       </el-row>
       <el-button type="primary" @click="onSubmit">Create</el-button>
     </el-form>
@@ -57,10 +67,10 @@ export default {
     return {
       form: {
         loaner_id: '',
-        amount: '',
-        period: '',
+        amount: 0,
+        period: 1,
         reason: '',
-        interest: 0.05,
+        interest: 0.02,
         chat_able: false,
         story: ''
       }
@@ -69,11 +79,11 @@ export default {
   methods: {
     onSubmit () {
       this.form.loaner_id = this.user.user_id
-      const axios = require('axios')
-      axios.post('loan', this.form).then((response) => {
-        this.openAlert('Loan succesvol toegevoegd.', 'success')
-      })
-      // this.$router.push({name: 'LoansSucces'})
+      // const axios = require('axios')
+      // axios.post('loan', this.form).then((response) => {
+      //   this.openAlert('Loan succesvol toegevoegd.', 'success')
+      // })
+      this.$router.push({name: 'LoansSucces'})
     },
     openAlert (message, type) {
       switch (type) {
@@ -85,6 +95,22 @@ export default {
             message: message,
             type: type
           })
+      }
+    },
+    interest () {
+      switch (this.form.period) {
+        case '1':
+          this.form.interest = 0.02
+          break
+        case '2':
+          this.form.interest = 0.025
+          break
+        case '3':
+          this.form.interest = 0.03
+          break
+        case '5':
+          this.form.interest = 0.04
+          break
       }
     }
   },
