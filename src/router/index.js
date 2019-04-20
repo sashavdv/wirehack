@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HomePage from '@/pages/homepage'
-import LoansPage from '@/pages/LoansPage'
+import LoansPage from '@/pages/loans/LoansPage'
 import ProfilePage from '@/pages/ProfilePage'
 import BorrowPage from '@/pages/loans/borrowpage'
 import InvestPage from '@/pages/investments/investpage'
-
 
 Vue.use(Router)
 
@@ -18,22 +17,22 @@ export default new Router({
       component: HomePage
     },
     {
-      path: '/',
+      path: '/borrow',
       name: 'Borrow',
       component: BorrowPage
     },
     {
-      path: '/',
+      path: '/invest',
       name: 'Invest',
       component: InvestPage
     },
     {
-      path: '/',
+      path: '/loans',
       name: 'Loans',
       component: LoansPage
     },
     {
-      path: '/',
+      path: '/profile',
       name: 'Profile',
       component: ProfilePage
     }
