@@ -7,7 +7,7 @@
       @current-change="loanDetails"
     >
       <el-table-column
-        prop="date"
+        prop="date_start"
         label="Date"
         >
       </el-table-column>
@@ -40,8 +40,8 @@ export default {
       const axios = require('axios')
       axios.get('loan/loaner/' + this.user.user_id)
         .then((response) => {
-          console.log(response)
-          this.loans = response
+          console.log(response.data[0])
+          this.loans = response.data
         })
         .catch(function (error) {
           // handle error
