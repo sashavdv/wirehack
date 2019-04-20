@@ -32,6 +32,9 @@ export default {
       loans: {}
     }
   },
+  created () {
+    this.getLoans()
+  },
   methods: {
     getLoans () {
       const axios = require('axios')

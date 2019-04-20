@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import moment from 'moment'
 
 // Router
 import router from './router'
@@ -23,6 +24,7 @@ Vue.use(Element, {locale})
 // Adding prototypes
 Vue.prototype.$http = Axios
 Vue.prototype.$store = store
+Vue.prototype.moment = moment
 
 Vue.config.productionTip = false
 

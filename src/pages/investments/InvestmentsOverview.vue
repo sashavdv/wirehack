@@ -2,15 +2,23 @@
 <template>
     <div>
       <h1 class="my-24 text-center">Investments</h1>
-        <p>General investments</p>
         <el-table
           :data="overview"
           style="width: 100%">
             <el-table-column label="Amount" prop="amount">
+              <template slot-scope="scope">
+                {{ scope.row.amount }} EUR
+              </template>
             </el-table-column>
             <el-table-column label="Start date" prop="date_start">
+              <template slot-scope="scope">
+                {{ moment(scope.row.date).format('DD-MM-YYYY') }}
+              </template>
             </el-table-column>
             <el-table-column label="period" prop="period">
+              <template slot-scope="scope">
+                {{ scope.row.period }} months
+              </template>
             </el-table-column>
             <!--<el-table-column label="Total sum" prop="">
             </el-table-column>

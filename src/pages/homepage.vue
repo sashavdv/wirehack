@@ -24,7 +24,7 @@ export default {
     },
     invest () {
       this.$router.push({
-        name: 'invest'
+        name: 'Invest'
       })
     }
   }

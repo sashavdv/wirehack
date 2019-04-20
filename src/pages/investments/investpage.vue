@@ -3,7 +3,7 @@
     <h1 class="my-24 text-center">Invest</h1>
     <el-form :inline="true" ref="form" :model="form" label-width="120px">
       <el-form-item label="Amount to invest">
-        <el-input-number v-model="form.amount" min="0" max="40000"></el-input-number>
+        <el-input-number v-model="form.amount" :min="0" :max="40000"></el-input-number>
       </el-form-item>
       <el-form-item label="Target audience">
         <el-select class="w-full" v-model="form.target" placeholder="Target">
@@ -18,7 +18,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Period">
-        <el-select v-model="form.period">
+        <el-select v-model="form.period" onblur="switch">
           <el-option label="1 years" value="1"></el-option>
           <el-option label="2 years" value="2"></el-option>
           <el-option label="3 years" value="3"></el-option>
@@ -44,13 +44,29 @@ export default {
         amount: '',
         target: '',
         period: '',
-        interest: ''
+        interest: 0
       }
     }
   },
   methods: {
     success () {
       this.$router.push({ name: 'InvestSuccesPage' })
+    },
+    switch () {
+      switch (this.form.period) {
+        case '1':
+          this.form.interest = 2
+          break
+        case '2':
+          this.form.interest = 2.5
+          break
+        case '3':
+          this.form.interest = 3
+          break
+        case '5':
+          this.form.interest = 4
+          break
+      }
     }
   }
 }

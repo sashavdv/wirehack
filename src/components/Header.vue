@@ -1,11 +1,12 @@
 <template>
   <div>
+    <span id="circle"></span>
     <el-row type="flex" class="row-bg" justify="space-between">
       <el-col :span="6" :sm="10" :xs="12" :md="8" :lg="6">
         <div class="grid-content logo">
           <router-link :to="{ path: '/' }" class="px-3 py-3 no-underline text-black rounded-lg">Home</router-link>
-          <router-link v-show="isLoaner()" :to="{ path: 'LoanCreate' }" class="px-3 py-3 no-underline text-black rounded-lg">Create loan</router-link>
-          <router-link v-show="isInvestor()" :to="{ path: 'Invest' }" class="px-3 py-3 no-underline text-black rounded-lg">Create investment</router-link>
+          <router-link v-show="isLoaner()" :to="{ name: 'LoanCreate' }" class="px-3 py-3 no-underline text-black rounded-lg">Create loan</router-link>
+          <router-link v-show="isInvestor()" :to="{ name: 'Invest' }" class="px-3 py-3 no-underline text-black rounded-lg">Create investment</router-link>
         </div>
       </el-col>
       <el-col :span="6" :sm="10" :xs="12" :md="8" :lg="6">
@@ -106,5 +107,17 @@ export default {
 </script>
 
 <style scoped>
-
+  #circle {
+    /*40 40*/
+    width: 350px;
+    height: 300px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    left: -75px;
+    top: -50px;
+    background-color: #53a8ff;
+    z-index: -15;
+  }
 </style>
