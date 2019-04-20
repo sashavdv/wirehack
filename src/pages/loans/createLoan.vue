@@ -55,7 +55,15 @@ export default {
       console.log(this.user.user_id)
       this.form.loaner_id = this.user.user_id
       console.log(this.form)
-      axios.post('loan', this.form)
+      axios.post('loan', {
+        loaner_id: 1,
+        amount: 5,
+        period: 5,
+        reason: 'wefwe',
+        interest: 0.05,
+        chat_able: false,
+        story: null
+      }, { withCredentials: true })
         .then((response) => {
           this.$router.push('LoansSucces')
         })

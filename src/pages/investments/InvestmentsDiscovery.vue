@@ -44,9 +44,7 @@
 </template>
 
 <script>
-import ElSelect from 'element-ui/packages/select/src/select';
 export default {
-  components: {ElSelect},
   name: 'discover-investments-page',
   data () {
     return {
@@ -56,7 +54,7 @@ export default {
         goal: '',
         contact_me: false,
         description: ''
-      },
+      }
     }
   },
   methods: {
