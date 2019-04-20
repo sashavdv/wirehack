@@ -42,7 +42,7 @@ export default {
   methods: {
     getPaymentDetails () {
       const axios = require('axios')
-      axios.get('loaners/loans/details/' + this.user.id)
+      axios.get('loan/' + this.user.id)
         .then((response) => {
           this.paymentDetails = response
           console.log(this.paymentDetails)

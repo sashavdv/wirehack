@@ -64,7 +64,6 @@ export default {
   },
   computed: {
     user: function () {
-      console.dir(this.$store.getters.getUser)
       return this.$store.getters.getUser
     }
   },

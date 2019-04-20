@@ -35,9 +35,11 @@ export default {
   methods: {
     getLoans () {
       const axios = require('axios')
-      axios.get('loaners/loans')
+      console.log(this.$store.getters.getUser.user_id)
+      axios.get('loan/loaner/' + this.$store.getters.getUser.user_id)
         .then((response) => {
-          console.log(this.notifications)
+          console.log(response)
+          this.loans = response
         })
         .catch(function (error) {
           // handle error

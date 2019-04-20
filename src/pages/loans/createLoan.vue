@@ -13,7 +13,7 @@
               </el-select>
             </el-form-item>
             <el-form-item label="Goal:">
-                <el-select v-model="form.goal" placeholder="Select">
+                <el-select v-model="form.reason" placeholder="Select">
                     <el-option label="Vehicle" value="vehicle"></el-option>
                     <el-option label="Marriage" value="marriage"></el-option>
                     <el-option label="Business" value="business"></el-option>
@@ -23,10 +23,10 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="I want to be contacted by investors:">
-                <el-checkbox v-model="form.contact_me"></el-checkbox>
+                <el-checkbox v-model="form.chat_able"></el-checkbox>
             </el-form-item>
             <el-form-item label="Description (optional)">
-                <el-input type="textarea" v-model="form.description"></el-input>
+                <el-input type="textarea" v-model="form.story"></el-input>
             </el-form-item>
             <el-button type="primary" @click="onSubmit">Create</el-button>
         </el-form>
@@ -39,27 +39,47 @@ export default {
   data () {
     return {
       form: {
+        loaner_id: '',
         amount: '',
         period: '',
-        goal: '',
-        contact_me: false,
-        description: ''
-      },
-      methods: {
-        onSubmit () {
-          const axios = require('axios')
-          axios.post('loaners/loans', {
-            form: this.form
-          })
-            .then((response) => {
-              this.$router.push('LoansSucces')
-            })
-            .catch(function (error) {
-              // handle error
-              console.log(error)
-            })
-        }
+        reason: '',
+        interest: 0.05,
+        chat_able: false,
+        story: ''
       }
+    }
+  },
+  methods: {
+    onSubmit () {
+      const axios = require('axios')
+      console.log(this.user.user_id)
+      this.form.loaner_id = this.$store.getters.getUser.user_id
+      console.log(this.form)
+      axios.post('loan', this.form)
+        .then((response) => {
+          this.$router.push('LoansSucces')
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error)
+        })
+    },
+    openAlert (message, type) {
+      switch (type) {
+        case 'error':
+          this.$message.error(message)
+          break
+        default:
+          this.$message({
+            message: message,
+            type: type
+          })
+      }
+    }
+  },
+  computed: {
+    user: function () {
+      return this.$store.getters.getUser
     }
   }
 }
