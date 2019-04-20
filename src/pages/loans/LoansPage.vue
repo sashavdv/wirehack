@@ -46,7 +46,7 @@ export default {
         })
     },
     loanDetails () {
-      this.$router.push('/loaners/loans')
+      this.$router.push({ path: '/loaners/loans', query: { loan_id: '' } })
     }
   },
   computed: {

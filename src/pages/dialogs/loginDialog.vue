@@ -37,7 +37,11 @@ export default {
       this.$store.dispatch('login', this.form)
         .then(() => {
           this.openAlert('Succesfully logged in', 'success')
-          this.$router.push({ name: 'LoanCreate' })
+          if (this.$store.getters.getUser.type === 'investor') {
+            this.$router.push({ name: 'Invest' })
+          } else {
+            this.$router.push({ name: 'LoanCreate' })
+          }
           this.toggleVisibility()
         })
         .catch(err => console.log(err))
