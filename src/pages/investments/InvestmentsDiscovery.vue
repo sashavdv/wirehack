@@ -8,7 +8,7 @@
                         <el-input-number v-model="form.min" min="0"></el-input-number>
                     </el-form-item>
                     <el-form-item label="Maximum:">
-                        <el-input-number label="Maximum:" v-model="form.max" min="0"></el-input-number>
+                        <el-input-number label="Maximum:" v-model="form.max" min="0" value="2000"></el-input-number>
                     </el-form-item>
                     <el-form-item label="Goal:">
                         <el-select v-model="form.goal" placeholder="Select">
@@ -40,18 +40,19 @@
         <el-main class="items-center w-full">
             <div class="w-3\/5 h-64">
                 <el-card class="box-card">
-                    <div class="rounded-full h-16 mx-auto w-16 flex items-center justify-center bg-blue">Test</div>
-                    <p class="text-center">Amount</p>
-                    <p class="text-center">Period</p>
-                    <p class="text-center">Goal</p>
-                    <p class="text-center">Description</p>
+                    <div class="rounded-full h-16 mx-auto w-16 flex items-center justify-center bg-blue">{{ dummy.name }}</div>
+                    <p id="amount" class="text-center">Amount: {{ dummy.amount }}</p>
+                    <p id="period" class="text-center">Period: {{ dummy.period}}</p>
+                    <p id="goal" class="text-center">Goal: {{ dummy.goal}}</p>
+                    <p id="interest" class="text-center">Interest rate: {{ dummy.interest}}</p>
+                    <p id="chat" class="text-center"> Chat: <el-checkbox v-model="form.chat"></el-checkbox></p>
                     <div class="mx-auto" style="margin: auto">
                         <el-row>
                             <el-col class="text-center" :span="12">
-                                <el-button style="margin: auto" type="success">Accept</el-button>
+                                <el-button type="success" @click="onAccept">Accept</el-button>
                             </el-col>
                             <el-col class="text-center" :span="12">
-                                <el-button style="margin: auto" type="danger">Decline</el-button>
+                                <el-button type="danger" @click="onDecline">Decline</el-button>
                             </el-col>
                         </el-row>
                     </div>
@@ -66,33 +67,57 @@ export default {
   name: 'discover-investments-page',
   data () {
     return {
+      dummy: {
+        name: 'Kaan',
+        amount: 1000,
+        period: '1 year',
+        goal: 'Vehicle',
+        interest: '2%'
+      },
       form: {
-        amount: '',
-        period: '',
-        goal: '',
-        contact_me: false,
+        min: 1000,
+        max: 2000,
+        period: '1 year',
+        goal: 'Vehicle',
+        chat: true,
         description: ''
       }
     }
   },
   methods: {
     onFilter () {
-      const axios = require('axios')
-      axios.post('invest/success', {
+      this.dummy.name = 'Yoren'
+      this.dummy.amount = 1500
+      this.dummy.period = '1 years'
+      this.dummy.goal = 'Vehicle'
+      this.dummy.interest = '2%'
+      /* const axios = require('axios')
+      axios.get('invest/success', {
         form: this.form
       })
         .then((response) => {
-          this.$router.push('InvestSucces')
+          this.$router.push('success')
         })
         .catch(function (error) {
           // handle error
           console.log(error)
         })
+        */
+    },
+    onAccept () {
+      this.$router.push('success')
+    },
+    onDecline () {
+      this.dummy.name = 'Sasha'
+      this.dummy.amount = 2000
+      this.dummy.period = '1 year'
+      this.dummy.goal = 'Vehicle'
+      this.dummy.interest = '2%'
     }
   }
 }
 </script>
 
 <style scoped>
-
+    p{margin-top: 10px;}
 </style>
