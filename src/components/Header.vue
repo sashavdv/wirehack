@@ -3,24 +3,24 @@
     <el-row type="flex" class="row-bg" justify="space-between">
       <el-col :span="6">
         <div class="grid-content logo">
-          <router-link :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Home</router-link>
-          <router-link v-if="user.type === 'loaner'" :to="{ path: 'LoanCreate' }" class="px-12 py-4 no-underline text-black">Create loan</router-link>
-          <router-link v-else-if="user.type === 'investor'" :to="{ path: 'Invest' }" class="px-12 py-4 no-underline text-black">Create investment</router-link>
+          <router-link :to="{ path: '/' }" class="px-3 py-3 no-underline text-black bg-primary rounded-bg">Home</router-link>
+          <router-link v-show="isLoaner()" :to="{ path: 'LoanCreate' }" class="px-3 py-3 no-underline text-black bg-primary rounded-bg">Create loan</router-link>
+          <router-link v-show="isInvestor()" :to="{ path: 'Invest' }" class="px-3 py-3 no-underline text-black bg-primary rounded-bg">Create investment</router-link>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="grid-content">
-          <el-button v-show="!user" type="primary" plain size="small" @click="openLoginDialog">Login</el-button>
+          <el-button class="px-3 py-3 bg-primary text-black rounded-bg" v-show="!user" type="primary" plain size="small" @click="openLoginDialog">Login</el-button>
 
           <el-dropdown v-show="user" @command="Profile">
               <el-button type="primary" plain  size="small">
                 Profile<i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
-              <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="profile">Profile</el-dropdown-item>
-                <el-dropdown-item v-if="user.type === 'loaner'" command="loans">Loans</el-dropdown-item>
-                <el-dropdown-item v-else-if="user.type === 'investor'" command="loans">Loans</el-dropdown-item>
-                <el-dropdown-item command="logout">Logout</el-dropdown-item>
+              <el-dropdown-menu slot="dropdown" class="bg-primary">
+                <el-dropdown-item class="bg-primary" command="profile">Profile</el-dropdown-item>
+                <el-dropdown-item class="bg-primary" v-show="isLoaner()" command="loans">Loans</el-dropdown-item>
+                <el-dropdown-item class="bg-primary" v-show="isInvestor()" command="loans">Investor</el-dropdown-item>
+                <el-dropdown-item class="bg-primary" command="logout">Logout</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
         </div>
@@ -60,6 +60,34 @@ export default {
     },
     openLoginDialog () {
       this.$refs.loginDialog.toggleVisibility()
+    },
+    isInvestor () {
+      if (this.$store.getters.getUser) {
+        if (this.$store.getters.getUser.type === 'investor') {
+          console.log('user is investor')
+          return true
+        } else {
+          console.dir(this.user)
+          return false
+        }
+      } else {
+        console.log('user is not here')
+        return false
+      }
+    },
+    isLoaner () {
+      if (this.$store.getters.getUser) {
+        if (this.$store.getters.getUser.type === 'loaner') {
+          console.log('user is loaner')
+          return true
+        } else {
+          console.dir(this.user)
+          return false
+        }
+      } else {
+        console.log('user is not here')
+        return false
+      }
     }
   },
   computed: {
