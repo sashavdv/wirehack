@@ -9,9 +9,12 @@
             </el-form-item>
             <el-form-item label="Goal:">
                 <el-select v-model="form.goal" placeholder="Select">
-                    <el-option label="Car" value="car"></el-option>
-                    <el-option label="Startup" value="startup"></el-option>
-                    <el-option label="Reason3" value="reason3"></el-option>
+                    <el-option label="Vehicle" value="vehicle"></el-option>
+                    <el-option label="Marriage" value="marriage"></el-option>
+                    <el-option label="Business" value="business"></el-option>
+                    <el-option label="Medical expenses" value="medical expenses"></el-option>
+                    <el-option label="Major purchase" value="major purchase"></el-option>
+                    <el-option label="Other" value="other"></el-option>
                 </el-select>
             </el-form-item>
             <el-form-item label="I want to be contacted by investors:">
