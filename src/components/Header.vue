@@ -10,9 +10,9 @@
       </el-col>
       <el-col :span="6">
         <div class="grid-content">
-          <el-button v-if="user" type="primary" plain size="small" @click="openLoginDialog">Login</el-button>
+          <el-button v-show="!user" type="primary" plain size="small" @click="openLoginDialog">Login</el-button>
 
-          <el-dropdown v-else @command="Profile">
+          <el-dropdown v-show="user" @command="Profile">
               <el-button type="primary" plain  size="small">
                 Profile<i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
@@ -20,12 +20,9 @@
                 <el-dropdown-item command="profile">Profile</el-dropdown-item>
                 <el-dropdown-item v-if="user.type === 'loaner'" command="loans">Loans</el-dropdown-item>
                 <el-dropdown-item v-else-if="user.type === 'investor'" command="loans">Loans</el-dropdown-item>
+                <el-dropdown-item command="logout">Logout</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-          <!-- TODO User configuration
-          <router-link v-if="user === 'null'" :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Login</router-link>
-          <router-link v-else :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Logout</router-link>
-          -->
         </div>
       </el-col>
     </el-row>
@@ -49,6 +46,9 @@ export default {
         case 'loans':
           this.$router.push('/Loans')
           break
+        case 'logout':
+          this.$store.dispatch('logout')
+          break
       }
     },
     Invest (command) {
@@ -62,9 +62,14 @@ export default {
       this.$refs.loginDialog.toggleVisibility()
     }
   },
-  data: function () {
-    return {
-      user: {}
+  computed: {
+    user: function () {
+      console.dir(this.$store.getters.getUser)
+      return this.$store.getters.getUser
+    }
+  },
+  watch: {
+    user: function (newVal, oldVal) {
     }
   }
 }
