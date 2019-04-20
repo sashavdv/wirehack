@@ -10,7 +10,7 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="Years:" label-width="200px">
-            <el-select class="w-full" v-model="form.period">
+            <el-select v-model="form.period">
               <el-option label="1 years" value="1"></el-option>
               <el-option label="2 years" value="2"></el-option>
               <el-option label="3 years" value="3"></el-option>
@@ -21,8 +21,8 @@
       </el-row>
       <el-row :gutter="10">
         <el-col :span="12">
-          <el-form-item label="Goal:" class="w-full" label-width="200px">
-            <el-select v-model="form.reason"  placeholder="Select">
+          <el-form-item label="Goal:" label-width="200px">
+            <el-select v-model="form.reason" placeholder="Select">
               <el-option label="Vehicle" value="vehicle"></el-option>
               <el-option label="Marriage" value="marriage"></el-option>
               <el-option label="Business" value="business"></el-option>
@@ -68,7 +68,12 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$router.push({name: 'LoansSucces'})
+      this.form.loaner_id = this.user.user_id
+      const axios = require('axios')
+      axios.post('loan', this.form).then((response) => {
+        this.openAlert('Loan succesvol toegevoegd.', 'success')
+      })
+      // this.$router.push({name: 'LoansSucces'})
     },
     openAlert (message, type) {
       switch (type) {
@@ -84,9 +89,9 @@ export default {
     }
   },
   computed: {
-    // user: function () {
-    // return this.$store.getters.getUser
-    // }
+    user: function () {
+      return this.$store.getters.getUser
+    }
   }
 }
 </script>

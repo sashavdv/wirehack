@@ -1,14 +1,13 @@
 <template>
   <div>
     <span id="circle"></span>
-    <el-row type="flex" class="row-bg" justify="space-between">
+    <el-row type="flex" class="row-bg" justify="space-between" align="middle">
       <el-col :span="6" :sm="10" :xs="12" :md="8" :lg="6">
-        <div class="grid-content logo">
-          <h1>p2p</h1>
-          <router-link :to="{ path: '/' }" class="px-3 py-3 no-underline text-black rounded-lg">Home</router-link>
-          <router-link v-show="isLoaner()" :to="{ name: 'LoanCreate' }" class="px-3 py-3 no-underline text-black rounded-lg">Create loan</router-link>
-          <router-link v-show="isInvestor()" :to="{ name: 'Invest' }" class="px-3 py-3 no-underline text-black rounded-lg">Create investment</router-link>
-        </div>
+          <router-link :to="{ path: '/' }" class="px-3 py-3 no-underline text-white rounded-lg"><h1 class="text-3xl">P2P Academy</h1></router-link>
+      </el-col>
+      <el-col :span="12">
+        <router-link v-show="isLoaner()" :to="{ name: 'LoanCreate' }" class="hover:bg-primary hover:text-white px-3 py-3 text-xl no-underline text-black rounded-lg">Create loan</router-link>
+        <router-link v-show="isInvestor()" :to="{ name: 'Invest' }" class="hover:bg-primary hover:text-white  px-3 py-3 text-xl no-underline text-black rounded-lg">Create investment</router-link>
       </el-col>
       <el-col :span="6" :sm="10" :xs="12" :md="8" :lg="6">
         <div class="grid-content">
@@ -53,6 +52,7 @@ export default {
           break
         case 'logout':
           this.$store.dispatch('logout')
+          this.$router.push({ name: 'Home' })
           break
       }
     },

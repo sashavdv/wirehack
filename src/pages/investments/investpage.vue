@@ -50,6 +50,15 @@ export default {
   },
   methods: {
     success () {
+      const axios = require('axios')
+      axios.post('loan', {
+        loaner_id: 1,
+        amount: this.form.amount,
+        interest: this.form.interest,
+        story: '',
+        reason: this.form.target,
+        chat_able: false
+      })
       this.$router.push({ name: 'InvestSuccesPage' })
     },
     interest () {
