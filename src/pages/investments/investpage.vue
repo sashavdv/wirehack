@@ -29,7 +29,7 @@
         <el-input disabled v-model="form.interest"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="success">Betaal</el-button>
+        <el-button type="primary" @click="success">Invest</el-button>
       </el-form-item>
     </el-form>
   </div>
