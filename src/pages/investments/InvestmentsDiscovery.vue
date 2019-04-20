@@ -8,7 +8,7 @@
                         <el-input-number v-model="form.min" min="0"></el-input-number>
                     </el-form-item>
                     <el-form-item label="Maximum:">
-                        <el-input-number label="Maximum:" v-model="form.max" min="0" value="2000"></el-input-number>
+                        <el-input-number label="Maximum:" v-model="form.max" min="0"></el-input-number>
                     </el-form-item>
                     <el-form-item label="Goal:">
                         <el-select v-model="form.goal" placeholder="Select">
@@ -46,6 +46,7 @@
                     <p id="goal" class="text-center">Goal: {{ dummy.goal}}</p>
                     <p id="interest" class="text-center">Interest rate: {{ dummy.interest}}</p>
                     <p id="chat" class="text-center"> Chat: <el-checkbox v-model="form.chat"></el-checkbox></p>
+                    <p id="story" class="text-center">Story: {{dummy.story}}</p>
                     <div class="mx-auto" style="margin: auto">
                         <el-row>
                             <el-col class="text-center" :span="12">
@@ -72,11 +73,12 @@ export default {
         amount: 1000,
         period: '1 year',
         goal: 'Vehicle',
-        interest: '2%'
+        interest: '2%',
+        story: 'I would like to buy an electrical bicycle to get to work easier.'
       },
       form: {
         min: 1000,
-        max: 2000,
+        max: 10000,
         period: '1 year',
         goal: 'Vehicle',
         chat: true,
@@ -91,6 +93,7 @@ export default {
       this.dummy.period = '1 years'
       this.dummy.goal = 'Vehicle'
       this.dummy.interest = '2%'
+      this.dummy.story = 'I would like to buy an electrical bicycle to get to work easier.'
       /* const axios = require('axios')
       axios.get('invest/success', {
         form: this.form
@@ -109,15 +112,18 @@ export default {
     },
     onDecline () {
       this.dummy.name = 'Sasha'
-      this.dummy.amount = 2000
+      this.dummy.amount = 10000
       this.dummy.period = '1 year'
-      this.dummy.goal = 'Vehicle'
+      this.dummy.goal = 'Startup'
       this.dummy.interest = '2%'
+      this.dummy.story = 'I\'ve got a great idea for a start-up. I want to build a website that would make loaning easier.\n' +
+          'If you want more information contact me on my email.'
     }
   }
 }
 </script>
 
 <style scoped>
-    p{margin-top: 10px;}
+    p{margin-top: 10px; margin-bottom: 10px;}
+    .flex{margin-bottom: 10px;}
 </style>
