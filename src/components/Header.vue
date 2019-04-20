@@ -19,7 +19,7 @@
               <el-dropdown-menu slot="dropdown" class="bg-primary">
                 <el-dropdown-item class="bg-primary text-white" command="profile">Profile</el-dropdown-item>
                 <el-dropdown-item class="bg-primary text-white" v-show="isLoaner()" command="loans">Loans</el-dropdown-item>
-                <el-dropdown-item class="bg-primary text-white" v-show="isInvestor()" command="loans">Investor</el-dropdown-item>
+                <el-dropdown-item class="bg-primary text-white" v-show="isInvestor()" command="investmentsoverview">Investor</el-dropdown-item>
                 <el-dropdown-item class="bg-primary text-white" command="logout">Logout</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -45,6 +45,9 @@ export default {
           break
         case 'loans':
           this.$router.push('/Loans')
+          break
+        case 'investmentsoverview':
+          this.$router.push('/invest/overview')
           break
         case 'logout':
           this.$store.dispatch('logout')
