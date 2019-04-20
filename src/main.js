@@ -17,6 +17,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 
 // Tailwind
 import '@/assets/style/tailwind.css'
+import './config/filters'
 
 // Use element
 Vue.use(Element, {locale})

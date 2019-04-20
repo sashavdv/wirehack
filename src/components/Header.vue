@@ -3,7 +3,11 @@
     <span id="circle"></span>
     <el-row type="flex" class="row-bg" justify="space-between" align="middle">
       <el-col :span="6" :sm="10" :xs="12" :md="8" :lg="6">
-          <router-link :to="{ path: '/' }" class="px-3 py-3 no-underline text-white rounded-lg"><h1 class="text-3xl">P2P Academy</h1></router-link>
+        <div class="logo">
+          <router-link :to="{ path: '/' }" class="px-3 py-3 no-underline text-white rounded-lg">
+            <h1 class="text-3xl">P2P Academy</h1>
+          </router-link>
+        </div>
       </el-col>
       <el-col :span="12">
         <router-link v-show="isLoaner()" :to="{ name: 'LoanCreate' }" class="hover:bg-primary hover:text-white px-3 py-3 text-xl no-underline text-black rounded-lg">Create loan</router-link>
