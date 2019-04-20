@@ -4,20 +4,22 @@
       <el-col :span="6">
         <div class="grid-content logo">
           <router-link :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Home</router-link>
-          <router-link v-if="role === 'loaner'" :to="{ path: 'LoanCreate' }" class="px-12 py-4 no-underline text-black">Create loan</router-link>
-          <router-link v-else-if="role === 'investor'" :to="{ path: 'Invest' }" class="px-12 py-4 no-underline text-black">Create investment</router-link>
+          <router-link v-if="user.role === 'loaner'" :to="{ path: 'LoanCreate' }" class="px-12 py-4 no-underline text-black">Create loan</router-link>
+          <router-link v-else-if="user.role === 'investor'" :to="{ path: 'Invest' }" class="px-12 py-4 no-underline text-black">Create investment</router-link>
         </div>
       </el-col>
       <el-col :span="6">
         <div class="grid-content">
-            <el-dropdown @command="Profile">
+          <el-button v-if="user" type="primary" plain size="small" @click="openLoginDialog">Login</el-button>
+
+          <el-dropdown v-else @command="Profile">
               <el-button type="primary" plain  size="small">
                 Profile<i class="el-icon-arrow-down el-icon--right"></i>
               </el-button>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="profile">Profile</el-dropdown-item>
-                <el-dropdown-item v-if="role === 'loaner'" command="loans">Loans</el-dropdown-item>
-                <el-dropdown-item v-else-if="role === 'investor'" command="loans">Loans</el-dropdown-item>
+                <el-dropdown-item v-if="user.role === 'loaner'" command="loans">Loans</el-dropdown-item>
+                <el-dropdown-item v-else-if="user.role === 'investor'" command="loans">Loans</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           <!-- TODO User configuration
@@ -27,12 +29,17 @@
         </div>
       </el-col>
     </el-row>
+    <login-dialog ref="loginDialog"></login-dialog>
   </div>
 </template>
 
 <script>
+import LoginDialog from '../pages/dialogs/loginDialog'
 export default {
   name: 'Header',
+  components: {
+    LoginDialog
+  },
   methods: {
     Profile (command) {
       switch (command) {
@@ -50,6 +57,14 @@ export default {
           this.$router.push('/Invest')
           break
       }
+    },
+    openLoginDialog () {
+      this.$refs.loginDialog.toggleVisibility()
+    }
+  },
+  data: function () {
+    return {
+      user: {}
     }
   }
 }

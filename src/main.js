@@ -6,6 +6,7 @@ import App from './App'
 // Router
 import router from './router'
 import Axios from 'axios'
+import './config/http'
 
 // Element
 import Element from 'element-ui'
