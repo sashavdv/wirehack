@@ -35,7 +35,10 @@ export default {
   methods: {
     login () {
       this.$store.dispatch('login', this.form)
-        .then(() => this.openAlert('Succesfully logged in', 'success'))
+        .then(() => {
+          this.openAlert('Succesfully logged in', 'success')
+          this.$router.push({ name: 'LoanCreate' })
+        })
         .catch(err => console.log(err))
     },
     openAlert (message, type) {
