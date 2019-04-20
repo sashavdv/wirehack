@@ -7,6 +7,7 @@ import App from './App'
 import router from './router'
 import Axios from 'axios'
 import './config/http'
+import store from './config/store'
 
 // Element
 import Element from 'element-ui'
@@ -21,6 +22,7 @@ Vue.use(Element, {locale})
 
 // Adding prototypes
 Vue.prototype.$http = Axios
+Vue.prototype.$store = store
 
 Vue.config.productionTip = false
 

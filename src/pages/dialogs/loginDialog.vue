@@ -34,21 +34,9 @@ export default {
   },
   methods: {
     login () {
-      const axios = require('axios')
-      axios.get('user/login', {
-        params: {
-          'username': this.form.username,
-          'password': this.form.password
-        }
-      })
-        .then((response) => {
-          this.openAlert('Succesfully logged in ', 'success')
-          this.$router.push({path: '/products', params: {actived: true}})
-        })
-        .catch((error) => {
-          this.openAlert('Could not activate account please try again')
-          console.log(error)
-        })
+      this.$store.dispatch('login', this.form)
+        .then(() => this.openAlert('Succesfully logged in', 'success'))
+        .catch(err => console.log(err))
     },
     openAlert (message, type) {
       switch (type) {
