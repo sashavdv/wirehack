@@ -1,10 +1,53 @@
 <template>
-  <div></div>
+  <div>
+    <h1 class="my-24 text-center">Invest</h1>
+    <el-form :inline="true" ref="form" :model="form" label-width="120px">
+      <el-form-item label="Amount to invest">
+        <el-input v-model="form.amount"></el-input>
+      </el-form-item>
+      <el-form-item label="Target audience">
+        <el-select class="w-full" v-model="form.target" placeholder="Target">
+          <el-option label="Home improvement" value="home"></el-option>
+          <el-option label="Vehicle" value="vehicle"></el-option>
+          <el-option label="Marriage" value="marriage"></el-option>
+          <el-option label="Studies" value="studies"></el-option>
+          <el-option label="Start up" value="startup"></el-option>
+          <el-option label="Medical expenses" value="medical"></el-option>
+          <el-option label="Major purchase" value="major"></el-option>
+          <el-option label="Other" value="other"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="Period">
+        <el-select v-model="form.period">
+          <el-option label="1 years" value="1"></el-option>
+          <el-option label="2 years" value="2"></el-option>
+          <el-option label="3 years" value="3"></el-option>
+          <el-option label="5 years" value="5"></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="Interest">
+        <el-input disabled v-model="form.interest"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">Betaal</el-button>
+      </el-form-item>
+    </el-form>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'investpage'
+  name: 'investpage',
+  data: function () {
+    return {
+      form: {
+        amount: '',
+        target: '',
+        period: '',
+        interest: ''
+      }
+    }
+  }
 }
 </script>
 
