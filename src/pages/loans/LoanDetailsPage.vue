@@ -36,13 +36,21 @@ export default {
   data: function () {
     return {
       paymentDetails: {},
-      user: {}
+      user: {},
+      loan_id: null
+    }
+  },
+  created () {
+    if (this.$router.query) {
+      if (this.$router.query.loan_id) {
+        this.loan_id = this.$router.query.loan_id
+      }
     }
   },
   methods: {
     getPaymentDetails () {
       const axios = require('axios')
-      axios.get('loan/' + this.user.id)
+      axios.get('loan/' + this.loan_id)
         .then((response) => {
           this.paymentDetails = response
           console.log(this.paymentDetails)
