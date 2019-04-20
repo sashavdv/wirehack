@@ -17,7 +17,7 @@
       <!-- Basket -->
 
       <!-- Footer -->
-      <el-footer class="bg-primary mt-16 pin-b absolute pin-x" height="250px">
+      <el-footer class="bg-primary relative mt-16 " height="250px">
         <el-container><Footer></Footer></el-container>
       </el-footer>
     </el-container>

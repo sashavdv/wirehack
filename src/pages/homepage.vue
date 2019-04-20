@@ -17,7 +17,7 @@ export default {
   methods: {
     borrow () {
       this.$router.push({
-        name: 'borrow'
+        name: 'LoanCreate'
       })
     },
     invest () {
