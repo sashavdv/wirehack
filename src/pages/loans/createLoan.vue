@@ -53,7 +53,7 @@ export default {
     onSubmit () {
       const axios = require('axios')
       console.log(this.user.user_id)
-      this.form.loaner_id = this.$store.getters.getUser.user_id
+      this.form.loaner_id = this.user.user_id
       console.log(this.form)
       axios.post('loan', this.form)
         .then((response) => {

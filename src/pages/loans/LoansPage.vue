@@ -35,8 +35,7 @@ export default {
   methods: {
     getLoans () {
       const axios = require('axios')
-      console.log(this.$store.getters.getUser.user_id)
-      axios.get('loan/loaner/' + this.$store.getters.getUser.user_id)
+      axios.get('loan/loaner/' + this.user.user_id)
         .then((response) => {
           console.log(response)
           this.loans = response
@@ -48,6 +47,11 @@ export default {
     },
     loanDetails () {
       this.$router.push('/loaners/loans')
+    }
+  },
+  computed: {
+    user: function () {
+      return this.$store.getters.getUser
     }
   }
 }
