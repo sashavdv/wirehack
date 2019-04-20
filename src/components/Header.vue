@@ -4,6 +4,7 @@
       <el-col :span="6">
         <div class="grid-content logo">
           <router-link :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Home</router-link>
+          <!-- TODO User load -->
           <router-link v-if="role === 'loaner'" :to="{ path: 'LoanCreate' }" class="px-12 py-4 no-underline text-black">Create loan</router-link>
           <router-link v-else-if="role === 'investor'" :to="{ path: 'Invest' }" class="px-12 py-4 no-underline text-black">Create investment</router-link>
         </div>
