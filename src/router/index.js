@@ -7,6 +7,8 @@ import ProfilePage from '@/pages/ProfilePage'
 import BorrowPage from '@/pages/loans/borrowpage'
 import InvestPage from '@/pages/investments/investpage'
 import LoanCreate from '@/pages/loans/createLoan'
+import InvestSuccesPage from '@/pages/investments/InvestSuccesPage'
+import InvestmentProfilePage from '@/pages/person/ProfilePage'
 
 Vue.use(Router)
 
@@ -29,6 +31,11 @@ export default new Router({
       component: InvestPage
     },
     {
+      path: '/invest/success',
+      name: 'InvestSuccess',
+      component: InvestSuccesPage
+    },
+    {
       path: '/loans',
       name: 'Loans',
       component: LoansPage
@@ -47,6 +54,11 @@ export default new Router({
       path: '/loans/create',
       name: 'LoanCreate',
       component: LoanCreate
+    },
+    {
+      path: '/loaner/id',
+      name: 'ProfilePerson',
+      component: InvestmentProfilePage
     }
   ]
 })
