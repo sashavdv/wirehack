@@ -19,24 +19,26 @@
 
 <script>
 export default {
-    name: 'create-loan',
-    data() {
-        return {
-            options: [{
-                value: 'car',
-                label: 'Car'
-            }, {
-                value: 'startup',
-                label: 'Startup'
-            }, {
-                value: 'reason3',
-                label: 'Reason3'
-            }
-            ],
-            value: '',
-            contact_me: true,
-        }
+  name: 'create-loan',
+  data () {
+    return {
+      options: [{
+        value: 'car',
+        label: 'Car'
+      },
+      {
+        value: 'startup',
+        label: 'Startup'
+      },
+      {
+        value: 'reason3',
+        label: 'Reason3'
+      }
+      ],
+      value: '',
+      contact_me: true
     }
+  }
 }
 </script>
 
