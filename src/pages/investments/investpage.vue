@@ -18,7 +18,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Period">
-        <el-select v-model="form.period" v-on="blur: switch">
+        <el-select v-model="form.period" @change="interest">
           <el-option label="1 years" value="1"></el-option>
           <el-option label="2 years" value="2"></el-option>
           <el-option label="3 years" value="3"></el-option>
@@ -52,7 +52,7 @@ export default {
     success () {
       this.$router.push({ name: 'InvestSuccesPage' })
     },
-    switch () {
+    interest () {
       switch (this.form.period) {
         case '1':
           this.form.interest = 2
