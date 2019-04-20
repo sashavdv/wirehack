@@ -1,5 +1,11 @@
 <template>
-
+  <div class="bg-green">
+    <p class="text-white py-24 text-center">
+      Your loan was succesfully requested,
+      you will recieve an email when it is accepted.
+      The average waiting time is 2-3 days
+    </p>
+  </div>
 </template>
 
 <script>
