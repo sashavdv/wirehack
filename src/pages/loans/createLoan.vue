@@ -51,26 +51,27 @@ export default {
   },
   methods: {
     onSubmit () {
-      const axios = require('axios')
-      console.log(this.user.user_id)
-      this.form.loaner_id = this.user.user_id
-      console.log(this.form)
-      axios.post('loan', {
-        loaner_id: 1,
-        amount: 5,
-        period: 5,
-        reason: 'wefwe',
-        interest: 0.05,
-        chat_able: false,
-        story: null
-      }, { withCredentials: true })
-        .then((response) => {
-          this.$router.push('LoansSucces')
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error)
-        })
+      // const axios = require('axios')
+      // console.log(this.user.user_id)
+      // this.form.loaner_id = this.user.user_id
+      // console.log(this.form)
+      // axios.post('loan', {
+      //   loaner_id: 1,
+      //   amount: 5,
+      //   period: 5,
+      //   reason: 'wefwe',
+      //   interest: 0.05,
+      //   chat_able: false,
+      //   story: null
+      // })
+      //   .then((response) => {
+      //     this.$router.push('LoansSucces')
+      //   })
+      //   .catch(function (error) {
+      //     handle error
+      // console.log(error)
+      // })
+      this.$router.push({ name: 'LoansSucces' })
     },
     openAlert (message, type) {
       switch (type) {
