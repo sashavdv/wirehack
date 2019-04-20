@@ -9,7 +9,7 @@
         </el-header>
 
         <!-- Content -->
-        <el-main>
+        <el-main class="mx-auto w-3/5">
           <router-view/>
         </el-main>
       </el-container>
