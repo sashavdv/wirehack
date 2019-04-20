@@ -63,7 +63,7 @@ export default {
         interest: 0.05,
         chat_able: false,
         story: null
-      }, { withCredentials: true })
+      })
         .then((response) => {
           this.$router.push('LoansSucces')
         })
