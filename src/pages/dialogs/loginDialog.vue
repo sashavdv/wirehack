@@ -38,6 +38,7 @@ export default {
         .then(() => {
           this.openAlert('Succesfully logged in', 'success')
           this.$router.push({ name: 'LoanCreate' })
+          this.toggleVisibility()
         })
         .catch(err => console.log(err))
     },
