@@ -10,6 +10,9 @@
         prop="date_start"
         label="Date"
         >
+        <template slot-scope="scope">
+          {{ moment(scope.row.date_start).format('DD-MM-YYYY') }}
+        </template>
       </el-table-column>
       <el-table-column
         prop="amount"
