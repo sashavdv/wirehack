@@ -4,8 +4,8 @@
       <el-col :span="6">
         <div class="grid-content logo">
           <router-link :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Home</router-link>
-          <router-link v-if="user.role === 'loaner'" :to="{ path: 'LoanCreate' }" class="px-12 py-4 no-underline text-black">Create loan</router-link>
-          <router-link v-else-if="user.role === 'investor'" :to="{ path: 'Invest' }" class="px-12 py-4 no-underline text-black">Create investment</router-link>
+          <router-link v-if="user.type === 'loaner'" :to="{ path: 'LoanCreate' }" class="px-12 py-4 no-underline text-black">Create loan</router-link>
+          <router-link v-else-if="user.type === 'investor'" :to="{ path: 'Invest' }" class="px-12 py-4 no-underline text-black">Create investment</router-link>
         </div>
       </el-col>
       <el-col :span="6">
@@ -18,8 +18,8 @@
               </el-button>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="profile">Profile</el-dropdown-item>
-                <el-dropdown-item v-if="user.role === 'loaner'" command="loans">Loans</el-dropdown-item>
-                <el-dropdown-item v-else-if="user.role === 'investor'" command="loans">Loans</el-dropdown-item>
+                <el-dropdown-item v-if="user.type === 'loaner'" command="loans">Loans</el-dropdown-item>
+                <el-dropdown-item v-else-if="user.type === 'investor'" command="loans">Loans</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           <!-- TODO User configuration
