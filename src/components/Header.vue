@@ -41,10 +41,10 @@ export default {
     Profile (command) {
       switch (command) {
         case 'profile':
-          this.$router.push('/Profile')
+          this.$router.push({name: 'Profile'})
           break
         case 'loans':
-          this.$router.push('/Loans')
+          this.$router.push({name: 'Loans'})
           break
         case 'logout':
           this.$store.dispatch('logout')
@@ -54,7 +54,7 @@ export default {
     Invest (command) {
       switch (command) {
         case 'invest':
-          this.$router.push('/Invest')
+          this.$router.push({ name: 'Invest' })
           break
       }
     },
