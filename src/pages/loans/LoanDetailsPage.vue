@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h1 class="my-24 text-center">
+      Details
+    </h1>
     <el-row :gutter="10">
      <el-col :span="6">
        <el-table
@@ -8,12 +11,12 @@
          <el-table-column
            prop="date"
            label="Date"
-           width="180">
+           >
          </el-table-column>
          <el-table-column
            prop="paid"
            label="Paid"
-           width="180">
+           >
          </el-table-column>
        </el-table>
      </el-col>

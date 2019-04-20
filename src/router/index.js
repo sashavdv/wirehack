@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HomePage from '@/pages/homepage'
 import LoansPage from '@/pages/loans/LoansPage'
 import LoansSuccessPage from '@/pages/loans/LoanSuccesPage'
+import LoanDetailsPage from '@/pages/loans/LoanDetailsPage'
 import ProfilePage from '@/pages/ProfilePage'
 import BorrowPage from '@/pages/loans/borrowpage'
 import InvestPage from '@/pages/investments/investpage'
@@ -33,7 +34,7 @@ export default new Router({
     },
     {
       path: '/invest/success',
-      name: 'InvestSuccess',
+      name: 'InvestSuccesPage',
       component: InvestSuccesPage
     },
     {
@@ -50,6 +51,11 @@ export default new Router({
       path: '/loans/success',
       name: 'LoansSucces',
       component: LoansSuccessPage
+    },
+    {
+      path: '/loans/details/id',
+      name: 'LoansDetails',
+      component: LoanDetailsPage
     },
     {
       path: '/profile',

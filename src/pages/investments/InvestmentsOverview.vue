@@ -1,6 +1,7 @@
 <!--:data="get?"  prop=?, width=?-->
 <template>
     <div>
+      <h1 class="my-24 text-center">Investments</h1>
         <p>General investments</p>
         <el-table>
             <el-table-column label="Amount">
