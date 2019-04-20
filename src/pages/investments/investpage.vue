@@ -18,7 +18,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Period">
-        <el-select v-model="form.period" onblur="switch">
+        <el-select v-model="form.period" @change="interest">
           <el-option label="1 years" value="1"></el-option>
           <el-option label="2 years" value="2"></el-option>
           <el-option label="3 years" value="3"></el-option>
@@ -29,7 +29,7 @@
         <el-input disabled v-model="form.interest"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="success">Betaal</el-button>
+        <el-button type="primary" @click="success">Invest</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -50,9 +50,18 @@ export default {
   },
   methods: {
     success () {
+      const axios = require('axios')
+      axios.post('loan', {
+        loaner_id: 1,
+        amount: this.form.amount,
+        interest: this.form.interest,
+        story: '',
+        reason: this.form.target,
+        chat_able: false
+      })
       this.$router.push({ name: 'InvestSuccesPage' })
     },
-    switch () {
+    interest () {
       switch (this.form.period) {
         case '1':
           this.form.interest = 2

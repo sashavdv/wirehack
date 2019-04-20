@@ -5,7 +5,7 @@
         <el-table
           :data="overview"
           style="width: 100%">
-            <el-table-column label="Amount" prop="amount">
+            <el-table-column label="Amount invested" prop="amount">
               <template slot-scope="scope">
                 {{ scope.row.amount }} EUR
               </template>
@@ -15,11 +15,19 @@
                 {{ moment(scope.row.date).format('DD-MM-YYYY') }}
               </template>
             </el-table-column>
-            <el-table-column label="period" prop="period">
+            <el-table-column label="End date" prop="period">
               <template slot-scope="scope">
-                {{ scope.row.period }} months
+                {{ moment().add(scope.row.period, 'M').format('DD-MM-YYYY') }}
               </template>
             </el-table-column>
+          <el-table-column
+            prop="interest"
+            label="ROI"
+          >
+            <template slot-scope="scope">
+              {{ (scope.row.interest + 1) * scope.row.amount }} EUR
+            </template>
+          </el-table-column>
             <!--<el-table-column label="Total sum" prop="">
             </el-table-column>
             <el-table-column label="Reason" prop="">
