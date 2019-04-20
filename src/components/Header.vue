@@ -3,7 +3,9 @@
     <el-row type="flex" class="row-bg" justify="space-between">
       <el-col :span="6">
         <div class="grid-content logo">
-          susu
+          <router-link :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Home</router-link>
+          <router-link v-if="role === 'loaner'" :to="{ path: 'LoanCreate' }" class="px-12 py-4 no-underline text-black">Create loan</router-link>
+          <router-link v-else-if="role === 'investor'" :to="{ path: 'Invest' }" class="px-12 py-4 no-underline text-black">Create investment</router-link>
         </div>
       </el-col>
       <el-col :span="6">
@@ -14,24 +16,14 @@
               </el-button>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="profile">Profile</el-dropdown-item>
+                <el-dropdown-item v-if="role === 'loaner'" command="loans">Loans</el-dropdown-item>
+                <el-dropdown-item v-else-if="role === 'investor'" command="loans">Loans</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
-          <el-dropdown @command="Loans">
-            <el-button type="primary" plain  size="small">
-              Loans<i class="el-icon-arrow-down el-icon--right"></i>
-            </el-button>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="loans">Loans</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-          <el-dropdown @command="Invest">
-            <el-button type="primary" plain  size="small">
-              Invest<i class="el-icon-arrow-down el-icon--right"></i>
-            </el-button>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command="loans">Loans</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+          <!-- TODO User configuration
+          <router-link v-if="user === 'null'" :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Login</router-link>
+          <router-link v-else :to="{ path: '/' }" class="px-12 py-4 no-underline text-black">Logout</router-link>
+          -->
         </div>
       </el-col>
     </el-row>
@@ -47,10 +39,6 @@ export default {
         case 'profile':
           this.$router.push('/Profile')
           break
-      }
-    },
-    Loans (command) {
-      switch (command) {
         case 'loans':
           this.$router.push('/Loans')
           break
