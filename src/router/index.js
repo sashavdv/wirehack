@@ -6,7 +6,6 @@ import ProfilePage from '@/pages/ProfilePage'
 import BorrowPage from '@/pages/loans/borrowpage'
 import InvestPage from '@/pages/investments/investpage'
 
-
 Vue.use(Router)
 
 export default new Router({
