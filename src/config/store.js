@@ -29,7 +29,7 @@ export default new Vuex.Store({
     login ({commit}, user) {
       return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({ url: 'http://192.168.6.127/api/user/login', params: { 'username': user.username, 'password': user.password }, method: 'GET' })
+        axios({ url: 'http://192.168.6.127/c2cLoansAPI/api/user/login', params: { 'username': user.username, 'password': user.password }, method: 'GET' })
           .then(resp => {
             const user = resp.data[0]
             localStorage.setItem('user', user)

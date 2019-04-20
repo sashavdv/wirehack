@@ -4,6 +4,7 @@
     <el-row type="flex" class="row-bg" justify="space-between">
       <el-col :span="6" :sm="10" :xs="12" :md="8" :lg="6">
         <div class="grid-content logo">
+          <h1>p2p</h1>
           <router-link :to="{ path: '/' }" class="px-3 py-3 no-underline text-black rounded-lg">Home</router-link>
           <router-link v-show="isLoaner()" :to="{ name: 'LoanCreate' }" class="px-3 py-3 no-underline text-black rounded-lg">Create loan</router-link>
           <router-link v-show="isInvestor()" :to="{ name: 'Invest' }" class="px-3 py-3 no-underline text-black rounded-lg">Create investment</router-link>
