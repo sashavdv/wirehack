@@ -18,7 +18,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="Period">
-        <el-select v-model="form.period" onblur="switch">
+        <el-select v-model="form.period" v-on="blur: switch">
           <el-option label="1 years" value="1"></el-option>
           <el-option label="2 years" value="2"></el-option>
           <el-option label="3 years" value="3"></el-option>
