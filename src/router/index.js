@@ -6,6 +6,7 @@ import LoansSuccessPage from '@/pages/loans/LoanSuccesPage'
 import ProfilePage from '@/pages/ProfilePage'
 import BorrowPage from '@/pages/loans/borrowpage'
 import InvestPage from '@/pages/investments/investpage'
+import LoanCreate from '@/pages/loans/createLoan'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: ProfilePage
+    },
+    {
+      path: '/loans/create',
+      name: 'LoanCreate',
+      component: LoanCreate
     }
   ]
 })
